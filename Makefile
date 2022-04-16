@@ -18,7 +18,7 @@ build/kernel.bin: kernel/kernel_entry.o ${OBJ}
 	/usr/local/i386elfgcc/bin/i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
 
 %.o : %.c ${HEADERS}
-	/usr/local/i386elfgcc/bin/i386-elf-gcc -ffreestanding -c $< -o $@ -I./kernel/ -I./
+	/usr/local/i386elfgcc/bin/i386-elf-gcc -ffreestanding -c $< -o $@ -I./kernel/ -I./ -std=c11
 
 %.o : %.asm
 	nasm $< -f elf -o $@
